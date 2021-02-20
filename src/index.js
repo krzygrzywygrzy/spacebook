@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './redux/reducers/rootReducer';
 import thunk from 'redux-thunk';
 import LoginPage from './pages/auth/login';
-
+import SignupPage from "./pages/auth/signup";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -22,6 +22,9 @@ ReactDOM.render(
       </Route>
       <Route path="/login">
         <LoginPage />
+      </Route>
+      <Route path="/signup">
+        <SignupPage />
       </Route>
     </Provider>
   </React.StrictMode>,

@@ -3,8 +3,12 @@
     margin: auto;
 }
 .auth-title {
-   font-size: 5rem;
+   font-size: 2rem;
    margin-top: 15rem; 
+}
+
+.auth-title > span {
+    font-size: 5rem;
 }
 
 .auth-form {
