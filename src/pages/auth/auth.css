@@ -3,5 +3,35 @@
     margin: auto;
 }
 .auth-title {
-   font-size: 5rem; 
+   font-size: 5rem;
+   margin-top: 15rem; 
+}
+
+.auth-form {
+    width: 20%;
+}
+
+.auth-form > input {
+    width: calc(100% - 1.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.auth-form-submit {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.submit-btn {
+    padding: 0.5rem 0.75rem;
+    border-radius: 45px;
+    background: #28b2fc;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.redirect-link {
+    cursor: pointer;
+    margin-left: 0.75rem;
 }
