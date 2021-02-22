@@ -5,7 +5,7 @@ import { useLocation } from 'wouter';
 import { actionLogIn } from '../../redux/actions/authActions';
 
 
-function LoginPage({actionLogIn}) {
+function LoginPage({ actionLogIn }) {
     const [location, setLocation] = useLocation();
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -20,9 +20,11 @@ function LoginPage({actionLogIn}) {
             <input type="password" value={password} placeholder="password"
                 onChange={(e) => { setPassword(e.target.value) }} /><br />
             <div className="auth-form-submit">
-                <div className="submit-btn" onClick={()=> actionLogIn({login, password}, ()=> {
+                <div className="submit-btn" onClick={() => actionLogIn({ login, password }, () => {
                     setLocation("/");
-                }, (data)=> {console.log(data)})}><span>log in</span></div>
+                }, (data) => {
+                    console.log(data)
+                })}><span>log in</span></div>
                 <div className="redirect-link" onClick={() => setLocation("/signup")}>sign up</div>
             </div>
         </div>

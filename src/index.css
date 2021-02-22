@@ -4,6 +4,7 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
@@ -28,6 +29,53 @@ footer {
   bottom: 0;
   text-align: center;
   font-weight: 300;
+}
+
+img {
+  vertical-align: middle;
+}
+
+
+/* Navbar style */
+.navbar-container {
+  border-bottom: 1px solid #dedede;
+  padding: 0.5rem 0;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background: white;
+}
+
+.navbar {
+  width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+nav > div {
+  cursor: pointer;
+}
+
+.navbar > div > input {
+  border-radius: 0px;
+  padding: 0.25rem;
+}
+
+.result-box {
+  position: absolute;
+  width: 250px;
+  transform: translateX(-15%);
+  margin-top: 1rem;
+
+  padding: 0.25rem;
+  z-index: 2;
+
+  border: 1px solid #dedede;
+  background: white;
 }
 
 
