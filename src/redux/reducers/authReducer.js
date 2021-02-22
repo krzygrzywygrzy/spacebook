@@ -6,13 +6,12 @@ const initState = {
 const authReducer = (state = initState, action) => {
     switch (action.type) {
         case "AUTH_USER":
-            //TODO: set state
+            state = action.user;
             break;
-    
+
         default:
             break;
     }
-
     return state;
 }
 

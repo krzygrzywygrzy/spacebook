@@ -1,16 +1,28 @@
-import React, {useEffect} from 'react'
-import {connect} from 'react-redux';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
 import { useLocation } from 'wouter';
+import Navbar from '../../components/navbar';
+import "./home.css";
 
-function Home (){
+function Home({ auth }) {
     const [location, setLocation] = useLocation();
 
     useEffect(() => {
-        //TODO: redirect after detecting that there is no token cookie
-        setLocation("/login");
+        if (auth.token === "")
+            setLocation("/login");
     }, [])
 
-    return (<div>Home</div>);
+    return (<div className="home">
+        <Navbar />
+    </div>
+    );
 }
 
-export default connect()(Home);
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    }
+}
+
+export default connect(mapStateToProps)(Home);
