@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from "wouter";
 import searchService from "../services/searchService";
+import "./css/navbar.css";
 
 //icons
 import account from '../assets/icons/account.svg';
@@ -25,7 +26,6 @@ export default function Navbar() {
         if (phrase.length >= 2) {
             setShowResultBox(true);
             setResults(await searchService(phrase));
-            console.log(results);
         }
     }
 
@@ -36,9 +36,12 @@ export default function Navbar() {
                 <input type="text" value={phrase} placeholder="search" onChange={search} />
                 {showResultBox && <div className="result-box">
                     {results.numOfResults > 0 ? <div>
-                        {results.result.map(item => <div>123</div>)}
+                        {results.result.map((item, index) => <div key={index}
+                            className="search-item" onClick={() => setLocation(`/profile/${item._id}`)} >
+                            {item.fname} {item.surname}
+                        </div>)}
                     </div> :
-                        <div>loading...</div>}
+                        <div className="no-res"><span>no results...</span></div>}
                 </div>}
             </div>
             <div>
@@ -49,5 +52,5 @@ export default function Navbar() {
                 </nav>
             </div>
         </div>
-    </div>);
+    </div >);
 }
