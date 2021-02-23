@@ -28,9 +28,36 @@ function ProfilePage({ id, auth }) {
 
     return (<div className="container">
         <Navbar />
-        <div className="profile"></div>
-        {/*TODO: make better loading layout */}
-        {loaded === false ? <div>loading</div> : <div>{userData._id}</div>}
+        <div className="profile">
+            {/*TODO: make better loading layout */}
+            {loaded === false ? <div className="loading"><span>loading</span></div>
+                : <section className="profile-showcase">
+                    <div className="profile-photo">
+                        <div className="photo"></div>
+                    </div>
+                    <div className="profile-info">
+                        <div className="profile-basic">
+                            <span>{userData.fname} {userData.surname}</span>
+                            <div className="btn" onClick={() => { throw Error("Sending message unimplemented!!!") }}>
+                                Send Message
+                            </div>
+                            <div className="btn" onClick={() => { throw Error("Adding friends unimplemented!!!") }}>
+                                Add friend
+                            </div>
+                        </div>
+                        <div className="additional-descriptions">
+                            {/* TODO: read this from api */}
+                            <div>Posts:12  Friends:12</div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                    </div>
+
+                </section>}
+            <section className="posts-container">
+                <div className="secttion-title"><span>Posts</span></div>
+                <div></div>
+            </section>
+        </div>
     </div>);
 }
 

@@ -1,0 +1,64 @@
+.profile {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-showcase {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+
+    margin-top: 2rem;
+}
+
+.profile-showcase > .info {
+    margin-left: 1rem;
+}
+
+.photo {
+    background: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 1px solid #dedede;
+}
+
+.profile-basic > span {
+    font-size: 1.25rem;
+    font-weight: 300;
+    display: block;
+}
+
+.profile-basic {
+    display: flex;
+    align-items: center;
+}
+
+.profile-basic > .btn {
+    display: inline-block;
+    padding: .25rem 0.5rem;
+    border: 1px solid #dedede;
+
+    margin-left: .5rem;
+    font-weight: 500;
+    border-radius: 3px;
+
+    cursor: pointer;
+}
+
+.additional-descriptions {
+    margin-top: 1rem;
+}
+
+.posts {
+    margin-top: 2rem;
+    
+}
+
+.posts-container > .secttion-title {
+    text-align: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #dedede;
+}
+
+
+

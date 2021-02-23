@@ -23,10 +23,10 @@
   }
   
   .navbar > div > input {
-    border-radius: 0px;
     padding: 0.25rem;
 
     border: 1px solid #dedede;
+    border-radius: 3px;
   }
   
   .result-box {
