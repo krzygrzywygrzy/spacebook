@@ -12,9 +12,10 @@ function Home({ auth }) {
             setLocation("/login");
     }, [])
 
-    return (<div className="home-container">
+    return (<div className="container">
         <Navbar />
         <div className="home">
+            <div></div>
         </div>
     </div>
     );

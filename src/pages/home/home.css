@@ -1,11 +1,9 @@
-.home-container {
-    background: #f7f7f7;
-    min-height: 100vh;
-}
+
 .home {
     width: 1000px;
     margin: 0 auto;
 
     grid-template-columns: 2fr 1fr;
+    
 }
 

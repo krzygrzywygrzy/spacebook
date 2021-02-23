@@ -5,9 +5,10 @@ import "./css/navbar.css";
 
 //icons
 import account from '../assets/icons/account.svg';
+import { connect } from 'react-redux';
 
-export default function Navbar() {
-    const [locarion, setLocation] = useLocation();
+function Navbar() {
+    const [location, setLocation] = useLocation();
     const [phrase, setPhrase] = useState("");
     const [results, setResults] = useState({});
     const [showResultBox, setShowResultBox] = useState(false);
@@ -31,13 +32,18 @@ export default function Navbar() {
 
     return (<div className="navbar-container">
         <div className="navbar">
-            <div>Spacebook</div>
+            <div onClick={() => setLocation("/")} style={{ cursor: "pointer" }}>Spacebook</div>
             <div>
                 <input type="text" value={phrase} placeholder="search" onChange={search} />
+                {/* The result box */}
                 {showResultBox && <div className="result-box">
                     {results.numOfResults > 0 ? <div>
                         {results.result.map((item, index) => <div key={index}
-                            className="search-item" onClick={() => setLocation(`/profile/${item._id}`)} >
+                            className="search-item" onClick={() => {
+                                setLocation(`/profile/${item._id}`);
+                                if (location.includes("profile"))
+                                    window.location.reload();
+                            }} >
                             {item.fname} {item.surname}
                         </div>)}
                     </div> :
@@ -46,7 +52,7 @@ export default function Navbar() {
             </div>
             <div>
                 <nav>
-                    <div onClick={() => setLocation("/proile")}>
+                    <div onClick={() => setLocation(`/profile/`)}>
                         <img src={account} width="24px" height="24px" />
                     </div>
                 </nav>
@@ -54,3 +60,7 @@ export default function Navbar() {
         </div>
     </div >);
 }
+
+
+
+export default connect()(Navbar);

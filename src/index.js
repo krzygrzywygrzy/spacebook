@@ -11,6 +11,7 @@ import rootReducer from './redux/reducers/rootReducer';
 import thunk from 'redux-thunk';
 import LoginPage from './pages/auth/login';
 import SignupPage from "./pages/auth/signup";
+import ProfilePage from './pages/profile/profile';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -25,6 +26,9 @@ ReactDOM.render(
       </Route>
       <Route path="/signup">
         <SignupPage />
+      </Route>
+      <Route path="/profile/:id">
+        {(params) => <ProfilePage id={params.id} />}
       </Route>
     </Provider>
   </React.StrictMode>,
