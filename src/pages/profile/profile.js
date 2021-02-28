@@ -38,12 +38,16 @@ function ProfilePage({ id, auth }) {
                     <div className="profile-info">
                         <div className="profile-basic">
                             <span>{userData.fname} {userData.surname}</span>
-                            <div className="btn" onClick={() => { throw Error("Sending message unimplemented!!!") }}>
-                                Send Message
-                            </div>
-                            <div className="btn" onClick={() => { throw Error("Adding friends unimplemented!!!") }}>
-                                Add friend
-                            </div>
+                            {id !== auth.id ? <>
+                                <div className="btn" onClick={() => { throw Error("Sending message unimplemented!!!") }}>
+                                    Send Message
+                                </div>
+                                <div className="btn" onClick={() => { throw Error("Adding friends unimplemented!!!") }}>
+                                    Add friend
+                                </div>
+                            </> :
+                                <div className="btn">Edit</div>
+                            }
                         </div>
                         <div className="additional-descriptions">
                             {/* TODO: read this from api */}

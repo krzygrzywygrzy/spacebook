@@ -50,3 +50,11 @@
   .no-res {
     text-align: center;
   }
+
+  .navbar-account {
+    height: 24px;
+    width: 24px;
+    background: #ebebeb;
+    border-radius: 100%;
+    border: 1px solid #dedede
+  }

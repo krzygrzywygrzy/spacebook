@@ -10,7 +10,6 @@ function LoginPage({ actionLogIn }) {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-
     return (<div className="auth">
         <div className="auth-title">
             <span>Spacebook</span>

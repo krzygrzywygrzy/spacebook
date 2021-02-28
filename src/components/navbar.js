@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from "wouter";
 import searchService from "../services/searchService";
 import "./css/navbar.css";
-
-//icons
-import account from '../assets/icons/account.svg';
 import { connect } from 'react-redux';
 
-function Navbar({auth}) {
+function Navbar({ auth }) {
     const [location, setLocation] = useLocation();
     const [phrase, setPhrase] = useState("");
     const [results, setResults] = useState({});
     const [showResultBox, setShowResultBox] = useState(false);
 
     useEffect(() => {
-        console.log()
         return () => {
             if (phrase.length <= 2) {
                 setShowResultBox(false);
@@ -28,9 +24,14 @@ function Navbar({auth}) {
         if (phrase.length >= 2) {
             setShowResultBox(true);
             setResults(await searchService(phrase));
-            console.log(auth._id);
         }
     }
+
+    const accountButton = () => {
+        if(auth.id === "")
+            setLocation("/login");
+        else setLocation(`/profile/${auth.id}`);
+    } 
 
     return (<div className="navbar-container">
         <div className="navbar">
@@ -56,8 +57,7 @@ function Navbar({auth}) {
             </div>
             <div>
                 <nav>
-                    <div onClick={() => setLocation(`/profile/`)}>
-                        <img src={account} width="24px" height="24px" />
+                    <div className="navbar-account" onClick={accountButton}>
                     </div>
                 </nav>
             </div>
