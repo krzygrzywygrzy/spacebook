@@ -7,13 +7,14 @@ import "./css/navbar.css";
 import account from '../assets/icons/account.svg';
 import { connect } from 'react-redux';
 
-function Navbar() {
+function Navbar({auth}) {
     const [location, setLocation] = useLocation();
     const [phrase, setPhrase] = useState("");
     const [results, setResults] = useState({});
     const [showResultBox, setShowResultBox] = useState(false);
 
     useEffect(() => {
+        console.log()
         return () => {
             if (phrase.length <= 2) {
                 setShowResultBox(false);
@@ -27,6 +28,7 @@ function Navbar() {
         if (phrase.length >= 2) {
             setShowResultBox(true);
             setResults(await searchService(phrase));
+            console.log(auth._id);
         }
     }
 
@@ -38,14 +40,16 @@ function Navbar() {
                 {/* The result box */}
                 {showResultBox && <div className="result-box">
                     {results.numOfResults > 0 ? <div>
-                        {results.result.map((item, index) => <div key={index}
-                            className="search-item" onClick={() => {
-                                setLocation(`/profile/${item._id}`);
-                                if (location.includes("profile"))
-                                    window.location.reload();
-                            }} >
-                            {item.fname} {item.surname}
-                        </div>)}
+                        {results.result.map((item, index) =>
+                            <div key={index}
+                                className="search-item" onClick={() => {
+                                    setLocation(`/profile/${item._id}`);
+                                    if (location.includes("profile"))
+                                        window.location.reload();
+                                }} >
+                                {item.fname} {item.surname}
+                            </div>
+                        )}
                     </div> :
                         <div className="no-res"><span>no results...</span></div>}
                 </div>}
@@ -61,6 +65,8 @@ function Navbar() {
     </div >);
 }
 
+const mapStateToProps = (state) => {
+    return { auth: state.auth, };
+}
 
-
-export default connect()(Navbar);
+export default connect(mapStateToProps)(Navbar);

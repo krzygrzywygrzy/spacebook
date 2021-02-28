@@ -1,9 +1,11 @@
 import { loginService, signupService } from "../../services/authService";
 
-const authenticateUser = (data, redirect) => {
+const authenticateUser = (data, redirect, dispatch) => {
     if (data.errors) {
         //TODO: display info to user
+        console.error("ERROR!");
     } else {
+        console.table(data);
         dispatch({ type: "AUTH_USER", user: data });
         redirect();
     }
@@ -12,19 +14,19 @@ const authenticateUser = (data, redirect) => {
 export const actionLogIn = (data, redirect) => {
     return async (dispatch, getState) => {
         let res = await loginService(data);
-        authenticateUser(res, redirect);
+        authenticateUser(res, redirect, dispatch);
     }
 }
 
 export const actionSignUp = (data, redirect) => {
     return async (dispatch, getState) => {
         let res = await signupService(data);
-        authenticateUser(res, redirect);
+        authenticateUser(res, redirect, dispatch);
     }
 }
 
 export const actionLogOut = () => {
     return (dispatch, getState) => {
-        dispatch({type: "LOG_OUT"});
+        dispatch({ type: "LOG_OUT" });
     }
 }

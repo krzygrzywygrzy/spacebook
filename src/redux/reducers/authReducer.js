@@ -1,6 +1,9 @@
 const initState = {
-    name: "",
+    id: "",
+    email: "",
+    fname:  "",
     surname: "",
+    token: "",
 }
 
 const authReducer = (state = initState, action) => {

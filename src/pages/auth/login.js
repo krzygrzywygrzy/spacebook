@@ -22,8 +22,6 @@ function LoginPage({ actionLogIn }) {
             <div className="auth-form-submit">
                 <div className="submit-btn" onClick={() => actionLogIn({ login, password }, () => {
                     setLocation("/");
-                }, (data) => {
-                    console.log(data)
                 })}><span>log in</span></div>
                 <div className="redirect-link" onClick={() => setLocation("/signup")}>sign up</div>
             </div>
@@ -36,7 +34,7 @@ function LoginPage({ actionLogIn }) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actionLogIn: (data, react, err) => dispatch(actionLogIn(data, react, err)),
+        actionLogIn: (data, react) => dispatch(actionLogIn(data, react)),
     };
 }
 
