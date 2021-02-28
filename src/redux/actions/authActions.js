@@ -1,16 +1,30 @@
-import { loginService } from "../../services/authService";
+import { loginService, signupService } from "../../services/authService";
 
-export const actionLogIn = (data, react, handleError) => {
+const authenticateUser = (data, redirect) => {
+    if (data.errors) {
+        //TODO: display info to user
+    } else {
+        dispatch({ type: "AUTH_USER", user: data });
+        redirect();
+    }
+}
+
+export const actionLogIn = (data, redirect) => {
     return async (dispatch, getState) => {
         let res = await loginService(data);
+        authenticateUser(res, redirect);
+    }
+}
 
-        if (res.errors) {
-            //TODO: display info to user
-        } else {
-            dispatch({ type: "AUTH_USER", user: res });
-            console.log(res);
-            react();
-        }
+export const actionSignUp = (data, redirect) => {
+    return async (dispatch, getState) => {
+        let res = await signupService(data);
+        authenticateUser(res, redirect);
+    }
+}
 
+export const actionLogOut = () => {
+    return (dispatch, getState) => {
+        dispatch({type: "LOG_OUT"});
     }
 }

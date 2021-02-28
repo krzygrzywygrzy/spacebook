@@ -8,7 +8,9 @@ const authReducer = (state = initState, action) => {
         case "AUTH_USER":
             state = action.user;
             break;
-
+        case "LOG_OUT":
+            state = initState;
+            break;
         default:
             break;
     }
