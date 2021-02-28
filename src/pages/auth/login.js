@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import "./auth.css";
 import { useLocation } from 'wouter';
@@ -9,6 +9,7 @@ function LoginPage({ actionLogIn }) {
     const [location, setLocation] = useLocation();
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+
 
     return (<div className="auth">
         <div className="auth-title">

@@ -12,24 +12,29 @@ import thunk from 'redux-thunk';
 import LoginPage from './pages/auth/login';
 import SignupPage from "./pages/auth/signup";
 import ProfilePage from './pages/profile/profile';
+import { persistStore } from "redux-persist";
+import { PersistGate } from 'redux-persist/integration/react';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="/login">
-        <LoginPage />
-      </Route>
-      <Route path="/signup">
-        <SignupPage />
-      </Route>
-      <Route path="/profile/:id">
-        {(params) => <ProfilePage id={params.id} />}
-      </Route>
+      <PersistGate persistor={persistor}>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/signup">
+          <SignupPage />
+        </Route>
+        <Route path="/profile/:id">
+          {(params) => <ProfilePage id={params.id} />}
+        </Route>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
