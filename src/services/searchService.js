@@ -1,15 +1,10 @@
-import {useState} from 'react';
+import { URL, options } from "./config"
 
 const searchService = async (phrase) => {
-    //const [results, setResults] = useState({res: {}, loaded: false})
-
-    const query = await fetch("http://localhost:8080/search",{
+    const query = await fetch(`${URL}search`,{
         body: JSON.stringify({phrase}),
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })//.then(res => setResults({res, loaded: true}));
+        ...options
+    })
     return await query.json();
 }
 

@@ -8,7 +8,6 @@ function Home({ auth }) {
     const [location, setLocation] = useLocation();
 
     useEffect(() => {
-        console.log(auth);
         if (auth.token === "")
             setLocation("/login");
     }, [])

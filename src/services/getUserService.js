@@ -1,10 +1,9 @@
+import { URL, options } from "./config"
+
 const getUserService = async (userID) => {
-    const query = await fetch("http://localhost:8080/getUser", {
-        method: "post",
-        body: JSON.stringify({userID}),
-        headers: {
-            "Content-Type": "application/json",
-        }
+    const query = await fetch(`${URL}getUser`, {
+        body: JSON.stringify({ userID }),
+        ...options
     });
     return await query.json();
 }
