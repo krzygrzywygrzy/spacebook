@@ -8,7 +8,7 @@ export const addFriend = async (data) => {
         body: JSON.stringify(data),
         headers: {
             ...contentType,
-            "Authorization": `Basic ${Cookies.get("authUser") | ''}`,
+            "Authorization": `Basic ${Cookies.get("authenticateUser") | ''}`,
         }
     });
     return await query.json();

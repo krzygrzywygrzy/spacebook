@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux';
 import { useLocation } from 'wouter';
 import Navbar from '../../components/navbar';
 import "./home.css";
+import Cookies from 'js-cookie'
 
-function Home({ auth }) {
+function Home() {
     const [location, setLocation] = useLocation();
 
     useEffect(() => {
-        if (auth.token === "")
+        if (!Cookies.get("authenticateUser"))
             setLocation("/login");
     }, [])
 
@@ -22,10 +22,4 @@ function Home({ auth }) {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        auth: state.auth,
-    }
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home;

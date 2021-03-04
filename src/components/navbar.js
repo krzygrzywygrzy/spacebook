@@ -57,8 +57,7 @@ function Navbar({ auth }) {
             </div>
             <div>
                 <nav>
-                    <div className="navbar-account" onClick={accountButton}>
-                    </div>
+                    <div className="navbar-account" onClick={accountButton}></div>
                 </nav>
             </div>
         </div>
