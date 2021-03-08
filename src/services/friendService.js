@@ -13,3 +13,4 @@ export const addFriend = async (data) => {
     });
     return await query.json();
 }
+
