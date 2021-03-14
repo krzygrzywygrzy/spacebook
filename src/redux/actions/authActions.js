@@ -4,6 +4,7 @@ const authenticateUser = (data, redirect, dispatch) => {
     if (data.errors) {
         //TODO: display info to user
         console.error("ERROR!");
+        console.log(data.errors);
     } else {
         console.table(data);
         dispatch({ type: "AUTH_USER", user: data });

@@ -12,11 +12,11 @@ const authReducer = (state = initState, action) => {
     switch (action.type) {
         case "AUTH_USER":
             //seting cookie here is temporary!
-            Cookies.set("authenticateUser", action.user.token);
+            Cookies.set("authenticatedUser", action.user.token);
             state = action.user;
             break;
         case "LOG_OUT":
-            Cookies.set("authenticateUser", "")
+            Cookies.set("authenticatedUser", "")
             state = initState;
             break;
         default:

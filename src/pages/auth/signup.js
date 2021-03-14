@@ -4,7 +4,7 @@ import "./auth.css";
 import { useLocation } from 'wouter';
 import { actionSignUp } from '../../redux/actions/authActions';
 
-function SignupPage() {
+function SignupPage({ actionSignUp }) {
     const [location, setLocation] = useLocation();
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
@@ -13,7 +13,9 @@ function SignupPage() {
     const [phoneNumber, setPhoneNumber] = useState("");
 
     const onSubmit = () => {
-        throw Error("Unimplemented");
+        actionSignUp({
+            fname: name, surname, password, email, phoneNumber
+        }, () => { setLocation("/") });
     }
 
     return (<div className="auth">
@@ -29,7 +31,7 @@ function SignupPage() {
                 onChange={(e) => { setEmail(e.target.value) }} />
             <input type="password" value={password} placeholder="password"
                 onChange={(e) => { setPassword(e.target.value) }} />
-            <input type="text" value={phoneNumber} placeholder="phone"
+            <input type="number" value={phoneNumber} placeholder="phone"
                 onChange={(e) => { setPhoneNumber(e.target.value) }} />
             <div className="auth-form-submit">
                 <div className="submit-btn" onClick={onSubmit}><span>sign up</span></div>
@@ -44,7 +46,7 @@ function SignupPage() {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actionSignUp: (data,) => dispatch(actionSignUp(data)),
+        actionSignUp: (data, redirect) => dispatch(actionSignUp(data, redirect)),
     };
 }
 
