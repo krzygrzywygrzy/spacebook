@@ -13,21 +13,21 @@ const authenticateUser = (data, redirect, dispatch) => {
 }
 
 export const actionLogIn = (data, redirect) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         let res = await loginService(data);
         authenticateUser(res, redirect, dispatch);
     }
 }
 
 export const actionSignUp = (data, redirect) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         let res = await signupService(data);
         authenticateUser(res, redirect, dispatch);
     }
 }
 
 export const actionLogOut = () => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch({ type: "LOG_OUT" });
     }
 }
