@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../css/profile.css";
 import { connect } from "react-redux";
 import Navbar from "../components/navbar";
@@ -21,7 +21,7 @@ function ProfilePage({ id, auth }) {
             <div className="profile-basic">
               <span>Name Surname</span>
               {id !== auth.id ? (
-                <>
+                <div>
                   <div
                     className="btn"
                     onClick={() => {
@@ -38,7 +38,7 @@ function ProfilePage({ id, auth }) {
                   >
                     Add friend
                   </div>
-                </>
+                </div>
               ) : (
                 <div className="btn">Edit</div>
               )}
